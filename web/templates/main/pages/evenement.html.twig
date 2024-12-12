@@ -1,0 +1,57 @@
+{% extends 'userTemplate.html.twig' %}
+
+{% block title %}Événement{% endblock %}
+
+{% block body %}
+
+<section class="review" id="review">
+
+    <h3 class="sub-heading"> Evenements </h3>
+    <h1 class="heading"> ForU evenements </h1>
+
+    <div class="swiper-container review-slider">
+
+        <div class="swiper-wrapper">
+            {% for r in evenement %}
+
+            <div class="swiper-slide slide">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <div class="user-info">
+
+                      <h3> <a href="{{ path('addreservation',{'id':r.id}) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            {{ r.nom }}
+                        </a></h3>
+                        <div class="stars">
+                            {{ r.date|date('d/m/y')}}
+                        </div>
+                    </div>
+                </div>
+                <p>{{r.categorie }}  </p>
+                <p>{{r.description }}  </p>
+
+                <p> {{ r.nbrPersonnes }} </p>
+                <img class="img-fluid img-top rounded-3 w-100" style="height:200px;" src="{{asset('uploads/') ~ r.image}}" alt="...">
+
+            </div>
+
+            {% endfor %}
+
+
+
+        </div>
+
+    </div>
+    
+</section>
+
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+{% endblock %}
